@@ -648,6 +648,11 @@
     transition: all 0.3s ease;
     border: 1px solid var(--gold);
   }
+
+  .intake-btn.secondary { color: var(--gold); background: transparent; border-color: var(--gold); }
+  .intake-btn.secondary:hover { background: var(--gold-soft, rgba(199,161,91,0.1)); }
+  .intake-btn.secondary::after { content: '\u2190'; }
+  .intake-btn.secondary:hover::after { transform: translateX(-4px); }
   .intake-btn::after { content: '→'; font-size: 14px; line-height: 1; transition: transform 0.3s ease; }
   .intake-btn:hover::after { transform: translateX(4px); }
   .intake-btn.primary {
@@ -882,19 +887,7 @@
 
 </div>
 
-<!-- TWEAKS PANEL -->
 <script>
-/* ============================================================
-   TWEAK DEFAULTS — editable JSON block (host rewrites this)
-   ============================================================ */
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "coverLayout": "classic",
-  "sectionOrder": ["expect", "timeline", "faq", "contact"]
-}
-  .intake-btn.secondary { color: var(--gold); background: transparent; border-color: var(--gold); }
-  .intake-btn.secondary:hover { background: var(--gold-soft, rgba(199,161,91,0.1)); }
-  .intake-btn.secondary::after { content: '←'; }
-  .intake-btn.secondary:hover::after { transform: translateX(-4px); }/*EDITMODE-END*/;
 
 /* ============================================================
    CONTENT

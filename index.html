@@ -2135,5 +2135,131 @@
   </style>
 
   
+<script>
+// NAV: transparent → solid on scroll
+    // ==========================================
+    const nav = document.getElementById('nav');
+    const backTop = document.getElementById('back-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+        backTop.classList.add('visible');
+      } else {
+        nav.classList.remove('scrolled');
+        backTop.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    // ==========================================
+    // HERO: trigger BG zoom on load
+    // ==========================================
+    window.addEventListener('load', () => {
+      document.getElementById('hero').classList.add('loaded');
+    });
+
+    // ==========================================
+    // MOBILE MENU
+    // ==========================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileClose.addEventListener('click', () => closeMobileMenu());
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    // Close on outside click
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) closeMobileMenu();
+    });
+
+    // ==========================================
+    // SCROLL REVEAL (Intersection Observer)
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger siblings in same parent
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ==========================================
+    // FORMS
+    // ==========================================
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('newsletter-email');
+      if (!input.value || !input.value.includes('@')) {
+        input.style.borderColor = '#c0392b';
+        input.focus();
+        return;
+      }
+      input.style.borderColor = '';
+      const btn = e.target.querySelector('.newsletter-btn');
+      btn.textContent = 'Subscribed ✓';
+      btn.style.background = 'var(--gold)';
+      btn.style.color = 'var(--navy)';
+      input.value = '';
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; }, 4000);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Inquiry Sent — We\'ll Be in Touch';
+      btn.style.background = 'var(--navy)';
+      btn.style.color = 'var(--ivory)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Inquiry';
+        btn.disabled = false;
+        form.reset();
+      }, 6000);
+    }
+
+    // ==========================================
+    // SMOOTH ACTIVE NAV HIGHLIGHT
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + entry.target.id) {
+              a.style.color = 'var(--gold)';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+  
+</script>
+
 </body>
 </html>

@@ -1,0 +1,2933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palantino Real Estate · Philadelphia &amp; Jersey Shore</title>
+  <meta name="description" content="Palantino Real Estate — luxury residential real estate across Philadelphia and the Jersey Shore. Sal Palantino, Broker. Dante Palantino, Licensee. Brokered by RE/MAX One Realty." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       ROOT VARIABLES & RESET
+    ============================================= */
+    :root {
+      --navy:   #0D2340;
+      --gold:   #C7A15B;
+      --ivory:  #F3EFE8;
+      --graphite: #1F1F1F;
+      --greige: #D8D2C7;
+      --gold-light: #d9b87a;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans:  'Montserrat', sans-serif;
+      --transition: 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--ivory);
+      color: var(--graphite);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1.2rem;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+    }
+
+    .divider-left {
+      margin-left: 0;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      border: 1px solid currentColor;
+      transition: background var(--transition), color var(--transition);
+      cursor: pointer;
+      background: transparent;
+    }
+
+    .btn-light {
+      color: var(--ivory);
+      border-color: rgba(243,239,232,0.5);
+    }
+    .btn-light:hover {
+      background: var(--ivory);
+      color: var(--navy);
+      border-color: var(--ivory);
+    }
+
+    .btn-gold {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .btn-gold:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-dark {
+      color: var(--navy);
+      border-color: var(--navy);
+    }
+    .btn-dark:hover {
+      background: var(--navy);
+      color: var(--ivory);
+    }
+
+    /* fade-in on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* =============================================
+       NAVIGATION
+    ============================================= */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.8rem 4rem;
+      background: linear-gradient(to bottom, rgba(13,35,64,0.78) 0%, transparent 100%);
+      transition: background var(--transition), padding var(--transition), backdrop-filter var(--transition);
+    }
+
+    #nav.scrolled {
+      background: rgba(13, 35, 64, 0.97);
+      backdrop-filter: blur(12px);
+      padding: 1.1rem 4rem;
+      box-shadow: 0 1px 0 rgba(199,161,91,0.15);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .nav-logo-img {
+      height: 100px;
+      width: auto;
+      display: block;
+      transition: height var(--transition);
+    }
+
+    #nav.scrolled .nav-logo-img {
+      height: 76px;
+    }
+
+    .footer-logo-img {
+      height: 110px;
+      width: auto;
+      display: block;
+      opacity: 0.92;
+    }
+
+    @media (max-width: 600px) {
+      .nav-logo-img { height: 70px; }
+      #nav.scrolled .nav-logo-img { height: 56px; }
+      .footer-logo-img { height: 80px; }
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.8rem;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(243,239,232,0.78);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left;
+    }
+
+    .nav-links a:hover { color: var(--ivory); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold) !important;
+      border: 1px solid rgba(199,161,91,0.45);
+      padding: 0.5rem 1.3rem;
+      transition: background var(--transition), color var(--transition) !important;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+      border-color: var(--gold);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--ivory);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--ivory);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 2rem; right: 2rem;
+      font-size: 1.5rem;
+      color: var(--ivory);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Hero triptych — three vertical panels */
+    .hero-triptych {
+      position: absolute;
+      inset: 0;
+      display: flex;
+    }
+
+    .hero-panel {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel + .hero-panel {
+      border-left: 1px solid rgba(199,161,91,0.4);
+    }
+
+    .hero-panel img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.05);
+      transition: transform 9s ease;
+    }
+
+    #hero.loaded .hero-panel img { transform: scale(1); }
+
+    .hero-panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom,
+        rgba(13,35,64,0.42) 0%,
+        rgba(13,35,64,0.20) 45%,
+        rgba(13,35,64,0.68) 100%);
+    }
+
+
+    @media (max-width: 700px) {
+      .hero-triptych { flex-direction: column; }
+      .hero-panel + .hero-panel {
+        border-left: none;
+        border-top: 1px solid rgba(199,161,91,0.35);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 2rem;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--ivory);
+      margin-bottom: 1.6rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.55s forwards;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-family: var(--sans);
+      font-size: clamp(0.72rem, 1.5vw, 0.82rem);
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: rgba(243,239,232,0.75);
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.75s forwards;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.95s forwards;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.6s forwards;
+    }
+
+    .hero-scroll span {
+      font-family: var(--sans);
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(243,239,232,0.5);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.5; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* =============================================
+       MARQUEE BAND
+    ============================================= */
+    .marquee-band {
+      background: var(--navy);
+      overflow: hidden;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(199,161,91,0.2);
+      border-bottom: 1px solid rgba(199,161,91,0.2);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .marquee-item {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(243,239,232,0.45);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .marquee-item::after {
+      content: '✦';
+      font-size: 0.4rem;
+      color: var(--gold);
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* =============================================
+       FEATURED LISTINGS
+    ============================================= */
+    #listings {
+      padding: 8rem 4rem;
+      background: var(--ivory);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+    }
+
+    .section-header-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: var(--navy);
+    }
+
+    .section-header-left h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .listing-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--navy);
+    }
+
+    .listing-card.large {
+      grid-column: span 2;
+    }
+
+    .listing-img {
+      height: 480px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .listing-card.large .listing-img { height: 560px; }
+
+    .listing-img img {
+      height: 100%;
+      transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      filter: brightness(0.88);
+    }
+
+    .listing-card:hover .listing-img img {
+      transform: scale(1.06);
+    }
+
+    .listing-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,35,64,0.85) 0%, rgba(13,35,64,0.1) 60%);
+      pointer-events: none;
+    }
+
+    .listing-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2rem;
+      color: var(--ivory);
+      transform: translateY(0);
+      transition: transform var(--transition);
+    }
+
+    .listing-neighborhood {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .listing-address {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.3rem;
+    }
+
+    .listing-details {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(243,239,232,0.65);
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .listing-price {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: var(--ivory);
+    }
+
+    .listing-hover-cta {
+      position: absolute;
+      bottom: 2rem; right: 2rem;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .listing-card:hover .listing-hover-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .listing-arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(199,161,91,0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      transition: background var(--transition);
+    }
+
+    .listing-arrow:hover { background: var(--gold); color: var(--navy); }
+
+    .listings-footer {
+      display: flex;
+      justify-content: center;
+      margin-top: 3.5rem;
+    }
+
+    /* =============================================
+       STATS BAR
+    ============================================= */
+    .stats-bar {
+      background: var(--navy);
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(199,161,91,0.15);
+      border-bottom: 1px solid rgba(199,161,91,0.15);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1rem 2rem;
+      border-right: 1px solid rgba(199,161,91,0.15);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(243,239,232,0.5);
+    }
+
+    /* =============================================
+       ABOUT
+    ============================================= */
+    #about {
+      padding: 9rem 4rem;
+      background: var(--ivory);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-imagery {
+      position: relative;
+    }
+
+    .about-img-main {
+      width: 100%;
+      height: 580px;
+      overflow: hidden;
+    }
+
+    .about-img-main img {
+      height: 100%;
+      transition: transform 1s ease;
+    }
+
+    .about-img-main:hover img { transform: scale(1.04); }
+
+    .about-img-accent {
+      position: absolute;
+      bottom: -2.5rem;
+      right: -2.5rem;
+      width: 220px;
+      height: 280px;
+      overflow: hidden;
+      border: 6px solid var(--ivory);
+    }
+
+    .about-img-accent img { height: 100%; }
+
+    .about-monogram {
+      position: absolute;
+      top: -1.5rem;
+      left: -1.5rem;
+      width: 80px;
+      height: 80px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-monogram-text {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .about-content {}
+
+    .about-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-content h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .about-content p {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-agents {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--greige);
+    }
+
+    .agent-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .agent-name {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+    }
+
+    .agent-title {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .agent-license {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: #999;
+    }
+
+    /* =============================================
+       NEIGHBORHOODS
+    ============================================= */
+    #neighborhoods {
+      padding: 8rem 4rem;
+      background: var(--graphite);
+    }
+
+    #neighborhoods .section-label { color: var(--gold); }
+
+    #neighborhoods h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--ivory);
+      margin-bottom: 3.5rem;
+    }
+
+    #neighborhoods h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .neighborhoods-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(199,161,91,0.12);
+    }
+
+    .neighborhood-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      height: 320px;
+    }
+
+    .neighborhood-card.tall { height: 480px; }
+
+    .neighborhood-img {
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+      filter: brightness(0.65);
+    }
+
+    .neighborhood-card:hover .neighborhood-img {
+      transform: scale(1.07);
+      filter: brightness(0.5);
+    }
+
+    .neighborhood-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,35,64,0.8) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .neighborhood-info {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.8rem;
+      color: var(--ivory);
+    }
+
+    .neighborhood-region {
+      font-family: var(--sans);
+      font-size: 0.55rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .neighborhood-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    .neighborhood-desc {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: rgba(243,239,232,0.7);
+      line-height: 1.6;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, margin 0.5s ease;
+    }
+
+    .neighborhood-card:hover .neighborhood-desc {
+      max-height: 80px;
+      margin-top: 0.5rem;
+    }
+
+    /* =============================================
+       EDITORIAL / MEDIA STRIP
+    ============================================= */
+    #media {
+      padding: 8rem 4rem;
+      background: var(--ivory);
+    }
+
+    #media h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+
+    #media h2 em { font-style: italic; color: var(--gold); }
+
+    .media-intro {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 3.5rem;
+      max-width: 480px;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .media-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .media-card-img {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .media-card-img img {
+      height: 100%;
+      transition: transform 0.7s ease;
+      filter: brightness(0.8);
+    }
+
+    .media-card:hover .media-card-img img { transform: scale(1.06); }
+
+    .media-card-body {
+      padding: 1.4rem;
+      background: var(--navy);
+    }
+
+    .media-tag {
+      font-family: var(--sans);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .media-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--ivory);
+      line-height: 1.3;
+    }
+
+    /* News feed skeleton */
+    .news-skeleton {
+      background: #e8e4dd;
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .news-skeleton::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.35) 50%, transparent 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.6s infinite;
+    }
+
+    /* News card date */
+    .media-date {
+      font-family: var(--sans);
+      font-size: 0.54rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      color: rgba(243,239,232,0.4);
+      margin-top: 0.4rem;
+      text-transform: uppercase;
+    }
+
+    /* News feed attribution line */
+    .news-attribution {
+      margin-top: 1.5rem;
+      text-align: center;
+    }
+
+    .news-attribution-text {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: #aaa;
+    }
+
+    /* Fallback error state for news */
+    .news-error {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 3rem 2rem;
+      color: #aaa;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    /* newsletter */
+    .newsletter-strip {
+      background: var(--navy);
+      padding: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .newsletter-copy h3 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      color: var(--ivory);
+      margin-bottom: 0.4rem;
+    }
+
+    .newsletter-copy p {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(243,239,232,0.55);
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      background: rgba(243,239,232,0.06);
+      border: 1px solid rgba(199,161,91,0.25);
+      border-right: none;
+      padding: 0.85rem 1.2rem;
+      color: var(--ivory);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+
+    .newsletter-input::placeholder { color: rgba(243,239,232,0.35); }
+    .newsletter-input:focus { border-color: rgba(199,161,91,0.6); }
+
+    .newsletter-btn {
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: var(--navy);
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 0 1.8rem;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition);
+      white-space: nowrap;
+    }
+
+    .newsletter-btn:hover {
+      background: var(--navy);
+      color: var(--gold);
+    }
+
+    /* =============================================
+       CONTACT
+    ============================================= */
+    #contact {
+      padding: 9rem 4rem;
+      background: var(--ivory);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-left h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .contact-left p {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: #666;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .contact-detail-label {
+      font-family: var(--sans);
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .contact-detail-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(13,35,64,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--navy);
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--navy);
+      color: var(--gold);
+      border-color: var(--navy);
+    }
+
+    /* Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: transparent;
+      border: 1px solid var(--greige);
+      padding: 0.85rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--graphite);
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: #bbb; }
+
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    .form-disclaimer {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #aaa;
+      letter-spacing: 0.04em;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      padding: 4rem 4rem 2rem;
+      border-top: 1px solid rgba(199,161,91,0.2);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(199,161,91,0.12);
+    }
+
+    .footer-brand-text {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(243,239,232,0.5);
+      margin-top: 1rem;
+      max-width: 280px;
+    }
+
+    .footer-col-title {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-links a {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(243,239,232,0.55);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-compliance {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(243,239,232,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-legal-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copyright {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(243,239,232,0.3);
+    }
+
+    .footer-eho {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(243,239,232,0.35);
+    }
+
+    .eho-icon {
+      width: 22px;
+      height: 22px;
+      border: 1px solid rgba(243,239,232,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .remax-attribution {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      color: rgba(243,239,232,0.3);
+    }
+
+    /* =============================================
+       IDX INTEGRATION STYLES
+    ============================================= */
+
+    /* Loading skeleton */
+    .listings-loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      padding: 5rem 2rem;
+      color: rgba(13,35,64,0.4);
+    }
+
+    .listings-spinner {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(199,161,91,0.25);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .listings-loading-text {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(13,35,64,0.4);
+    }
+
+    /* Skeleton cards */
+    .listing-skeleton {
+      background: #e8e4dd;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .listing-skeleton::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.35) 50%, transparent 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.6s infinite;
+    }
+
+    @keyframes shimmer {
+      from { background-position: 200% 0; }
+      to   { background-position: -200% 0; }
+    }
+
+    /* IDX error state */
+    .listings-error {
+      text-align: center;
+      padding: 4rem 2rem;
+      border: 1px dashed rgba(199,161,91,0.3);
+    }
+
+    .listings-error-title {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .listings-error-sub {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: #999;
+      letter-spacing: 0.1em;
+    }
+
+    /* IDX compliance badge on each card */
+    .listing-idx-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(13,35,64,0.82);
+      backdrop-filter: blur(6px);
+      padding: 0.3rem 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      z-index: 5;
+    }
+
+    .listing-idx-text {
+      font-family: var(--sans);
+      font-size: 0.52rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(243,239,232,0.65);
+    }
+
+    .listing-idx-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Listing courtesy line */
+    .listing-courtesy {
+      font-family: var(--sans);
+      font-size: 0.54rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(243,239,232,0.45);
+      margin-top: 0.3rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* IDX compliance footer (Bright MLS required) */
+    .idx-compliance-bar {
+      background: var(--ivory);
+      border-top: 1px solid var(--greige);
+      padding: 1.2rem 4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-top: 0;
+    }
+
+    .idx-bright-logo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .idx-bright-icon {
+      width: 18px;
+      height: 18px;
+      border: 1px solid rgba(13,35,64,0.3);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 600;
+      color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .idx-compliance-text {
+      font-family: var(--sans);
+      font-size: 0.58rem;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #999;
+      letter-spacing: 0.04em;
+    }
+
+    .idx-last-updated {
+      font-family: var(--sans);
+      font-size: 0.56rem;
+      font-weight: 300;
+      color: #bbb;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    /* IDX setup banner (shows when not yet configured) */
+    .idx-setup-banner {
+      background: var(--navy);
+      border: 1px solid rgba(199,161,91,0.2);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .idx-setup-banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .idx-setup-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--gold);
+    }
+
+    .idx-setup-sub {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(243,239,232,0.5);
+    }
+
+    /* Listings pagination */
+    .listings-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 3rem;
+    }
+
+    .page-btn {
+      background: none;
+      border: 1px solid var(--greige);
+      color: var(--navy);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .page-btn:hover, .page-btn.active {
+      background: var(--navy);
+      color: var(--ivory);
+      border-color: var(--navy);
+    }
+
+    .page-btn:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    /* Filter bar */
+    .listings-filter-bar {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--greige);
+      color: #888;
+      cursor: pointer;
+      background: none;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .filter-chip:hover, .filter-chip.active {
+      background: var(--navy);
+      color: var(--ivory);
+      border-color: var(--navy);
+    }
+
+    @media (max-width: 600px) {
+      .idx-compliance-bar { padding: 1.2rem 1.5rem; }
+    }
+
+    /* =============================================
+       BACK TO TOP
+    ============================================= */
+    #back-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--navy);
+      border: 1px solid rgba(199,161,91,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 0.9rem;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity var(--transition), transform var(--transition), background var(--transition);
+      z-index: 500;
+    }
+
+    #back-top.visible { opacity: 1; transform: translateY(0); }
+    #back-top:hover { background: var(--gold); color: var(--navy); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1100px) {
+      #nav { padding: 1.5rem 2.5rem; }
+      #nav.scrolled { padding: 1rem 2.5rem; }
+      .nav-links { gap: 2rem; }
+      #listings, #about, #neighborhoods, #media, #contact {
+        padding: 6rem 2.5rem;
+      }
+      .stats-bar { padding: 3rem 2.5rem; }
+      .newsletter-strip { padding: 3rem 2.5rem; }
+      footer { padding: 3rem 2.5rem 2rem; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .listings-grid { grid-template-columns: 1fr; }
+      .listing-card.large { grid-column: span 1; }
+      .listing-img, .listing-card.large .listing-img { height: 360px; }
+
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .about-img-accent { right: 1rem; bottom: -1.5rem; }
+
+      .neighborhoods-grid { grid-template-columns: 1fr 1fr; }
+      .neighborhood-card.tall { height: 320px; }
+
+      .media-grid { grid-template-columns: 1fr 1fr; }
+
+      .newsletter-strip { flex-direction: column; align-items: flex-start; }
+      .newsletter-form { max-width: 100%; width: 100%; }
+
+      #contact { grid-template-columns: 1fr; gap: 3.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      #nav { padding: 1.2rem 1.5rem; }
+      #nav.scrolled { padding: 0.9rem 1.5rem; }
+
+      .hero-headline { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+
+      #listings, #about, #neighborhoods, #media, #contact {
+        padding: 5rem 1.5rem;
+      }
+      .stats-bar { padding: 2.5rem 1.5rem; grid-template-columns: 1fr 1fr; }
+      .newsletter-strip { padding: 2.5rem 1.5rem; }
+
+      .neighborhoods-grid { grid-template-columns: 1fr; }
+      .media-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      footer { padding: 3rem 1.5rem 2rem; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo" aria-label="Palantino Real Estate — home">
+      <img src="assets/logo-horizontal.svg" alt="Palantino Real Estate" class="nav-logo-img" />
+    </a>
+
+    <ul class="nav-links" role="navigation" aria-label="Main navigation">
+      <li><a href="#about">About</a></li>
+      <li><a href="#neighborhoods">Neighborhoods</a></li>
+      <li><a href="#media">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+          <li><a href="onboarding/">Client Kit</a></li>
+        </ul>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <button class="mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+    <a href="#about" onclick="closeMobileMenu()">About</a>
+    <a href="#neighborhoods" onclick="closeMobileMenu()">Neighborhoods</a>
+    <a href="#media" onclick="closeMobileMenu()">Journal</a>
+    <a href="#contact" onclick="closeMobileMenu()">Inquire</a>
+    <a href="onboarding/" onclick="closeMobileMenu()">Client Kit</a>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-triptych" role="img" aria-label="Luxury homes in Old City Philadelphia, Montgomery County, and Sea Isle City">
+      <div class="hero-panel">
+        <img
+          src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=82&auto=format&fit=crop"
+          alt="Old City Philadelphia historic architecture"
+          loading="eager"
+        />
+        <div class="hero-panel-overlay"></div>
+      </div>
+      <div class="hero-panel">
+        <img
+          src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=900&q=82&auto=format&fit=crop"
+          alt="Montgomery County Pennsylvania stone home"
+          loading="eager"
+        />
+        <div class="hero-panel-overlay"></div>
+      </div>
+      <div class="hero-panel">
+        <img
+          src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=900&q=82&auto=format&fit=crop"
+          alt="Sea Isle City New Jersey shore"
+          loading="eager"
+        />
+        <div class="hero-panel-overlay"></div>
+      </div>
+    </div>
+
+    <div class="hero-content">
+      <span class="hero-eyebrow">Philadelphia · Montgomery County · Bucks County · South Jersey · Jersey Shore</span>
+      <h1 class="hero-headline">From The Block<br/><em>To The Beach</em></h1>
+      <p class="hero-sub">Philadelphia & Coastal Real Estate, Reimagined</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-light">Get in Touch</a>
+        <a href="#neighborhoods" class="btn btn-gold">Explore Neighborhoods</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE ===== -->
+  <div class="marquee-band" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- two copies for seamless loop -->
+      <span class="marquee-item">Society Hill</span>
+      <span class="marquee-item">Old City</span>
+      <span class="marquee-item">Chestnut Hill</span>
+      <span class="marquee-item">Gladwyne</span>
+      <span class="marquee-item">Villanova</span>
+      <span class="marquee-item">Wayne</span>
+      <span class="marquee-item">New Hope</span>
+      <span class="marquee-item">Doylestown</span>
+      <span class="marquee-item">Avalon</span>
+      <span class="marquee-item">Stone Harbor</span>
+      <span class="marquee-item">Sea Isle City</span>
+      <span class="marquee-item">Ocean City</span>
+      <span class="marquee-item">Cape May</span>
+      <span class="marquee-item">Society Hill</span>
+      <span class="marquee-item">Old City</span>
+      <span class="marquee-item">Chestnut Hill</span>
+      <span class="marquee-item">Gladwyne</span>
+      <span class="marquee-item">Villanova</span>
+      <span class="marquee-item">Wayne</span>
+      <span class="marquee-item">New Hope</span>
+      <span class="marquee-item">Doylestown</span>
+      <span class="marquee-item">Avalon</span>
+      <span class="marquee-item">Stone Harbor</span>
+      <span class="marquee-item">Sea Isle City</span>
+      <span class="marquee-item">Ocean City</span>
+      <span class="marquee-item">Cape May</span>
+    </div>
+  </div>
+
+  <!-- ===== STATS ===== -->
+  <div class="stats-bar" role="region" aria-label="Key statistics">
+    <div class="stat-item reveal">
+      <div class="stat-number">$200M+</div>
+      <div class="stat-label">In Closed Volume</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Transactions Closed</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">Years of Experience</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Markets Served</div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="about-imagery reveal">
+      <div class="about-img-main">
+        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&q=80&auto=format&fit=crop" alt="Palantino Real Estate team" loading="lazy"/>
+      </div>
+      <div class="about-img-accent">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80&auto=format&fit=crop" alt="Luxury property interior" loading="lazy"/>
+      </div>
+      <div class="about-monogram" aria-hidden="true">
+        <img src="assets/logo-vertical.svg" alt="" style="width:54px;height:54px;object-fit:contain;" />
+      </div>
+    </div>
+
+    <div class="about-content reveal">
+      <span class="section-label">Our Story</span>
+      <h2 id="about-heading">Trusted Service.<br/><em>Exceptional Results.</em></h2>
+      <div class="divider divider-left"></div>
+      <p>Palantino Real Estate is a boutique luxury residential practice serving Philadelphia and the Jersey Shore. We combine deep local knowledge with a modern, client-first approach — delivering the premium presentation and personalized attention that discerning buyers and sellers expect.</p>
+      <p>From historic Society Hill townhomes to oceanfront estates in Avalon, we curate every transaction with the same editorial care we bring to every detail. Our market is anything but generic. Neither is our service.</p>
+      <p>We specialize in helping clients navigate two of the East Coast's most compelling real estate markets — the storied neighborhoods of Philadelphia and the coveted shoreline communities of the Jersey coast.</p>
+
+      <div class="about-agents">
+        <div class="agent-card">
+          <span class="agent-name">Sal Palantino</span>
+          <span class="agent-title">Broker of Record</span>
+          <span class="agent-license">PA License #AB123456</span>
+        </div>
+        <div class="agent-card">
+          <span class="agent-name">Dante Palantino</span>
+          <span class="agent-title">Licensed Real Estate Salesperson</span>
+          <span class="agent-license">PA License #RS789012</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEIGHBORHOODS ===== -->
+  <section id="neighborhoods" aria-labelledby="neighborhoods-heading">
+    <div class="reveal">
+      <span class="section-label">Where We Work</span>
+      <h2 id="neighborhoods-heading">The <em>Markets</em> We Know</h2>
+    </div>
+
+    <div class="neighborhoods-grid">
+      <!-- Philadelphia -->
+      <article class="neighborhood-card tall reveal" aria-label="Society Hill neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1667318252802-c6caa7f13ec6?w=600&q=75&auto=format&fit=crop" alt="Society Hill Philadelphia" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Philadelphia</p>
+          <h3 class="neighborhood-name">Society Hill</h3>
+          <p class="neighborhood-desc">Philadelphia's most historic neighborhood, defined by cobblestone streets, Federal architecture, and enduring prestige.</p>
+        </div>
+      </article>
+
+      <article class="neighborhood-card reveal" aria-label="Chestnut Hill neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1617334014625-cdaeeec6ed87?w=600&q=75&auto=format&fit=crop" alt="Old City Philadelphia historic architecture" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Philadelphia</p>
+          <h3 class="neighborhood-name">Old City</h3>
+          <p class="neighborhood-desc">Industrial-chic lofts and luxury condos surrounded by Philadelphia's richest colonial heritage.</p>
+        </div>
+      </article>
+
+      <article class="neighborhood-card reveal" aria-label="Old City neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1775704833284-a3aabcd8a0b1?w=600&q=75&auto=format&fit=crop" alt="Chestnut Hill Philadelphia hillside neighborhood" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Philadelphia</p>
+          <h3 class="neighborhood-name">Chestnut Hill</h3>
+          <p class="neighborhood-desc">Philadelphia's Garden District — stately Victorian homes, boutique shopping, and a village atmosphere unlike anywhere else in the city.</p>
+        </div>
+      </article>
+
+      <article class="neighborhood-card reveal" aria-label="Montgomery County neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1690303563939-2d0b77bf393a?w=600&q=75&auto=format&fit=crop" alt="Montgomery County Pennsylvania stone colonial home" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Montgomery County, PA</p>
+          <h3 class="neighborhood-name">Montgomery County</h3>
+          <p class="neighborhood-desc">Top-ranked schools, historic stone estates, and rolling countryside within easy reach of Center City.</p>
+        </div>
+      </article>
+
+      <!-- Shore -->
+      <article class="neighborhood-card reveal" aria-label="Bucks County neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1720631881905-a66dbfd0d773?w=600&q=75&auto=format&fit=crop" alt="Bucks County Pennsylvania estate home on green field" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Bucks County, PA</p>
+          <h3 class="neighborhood-name">Bucks County</h3>
+          <p class="neighborhood-desc">Grand estates and farmhouse compounds set against the Delaware River Valley — Pennsylvania's most scenic and sought-after county.</p>
+        </div>
+      </article>
+
+      <article class="neighborhood-card reveal" aria-label="Avalon and Stone Harbor neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1533391200381-f601c655fac2?w=600&q=75&auto=format&fit=crop" alt="Avalon Stone Harbor New Jersey aerial coastline" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Jersey Shore</p>
+          <h3 class="neighborhood-name">Avalon &amp; Stone Harbor</h3>
+          <p class="neighborhood-desc">Pristine dunes, world-class oceanfront estates, and the quiet refinement that defines the Seven Mile Island lifestyle.</p>
+        </div>
+      </article>
+
+      <article class="neighborhood-card reveal" aria-label="Sea Isle and Ocean City neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1716511539877-3f3ee905deaf?w=600&q=75&auto=format&fit=crop" alt="Sea Isle City Ocean City New Jersey shore house" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Cape May County</p>
+          <h3 class="neighborhood-name">Sea Isle &amp; Ocean City</h3>
+          <p class="neighborhood-desc">Beloved family shore towns with strong rental investment, classic boardwalk character, and coveted oceanfront and bay-block inventory.</p>
+        </div>
+      </article>
+
+      <article class="neighborhood-card reveal" aria-label="Cape May neighborhood">
+        <img class="neighborhood-img" src="https://images.unsplash.com/photo-1700145476426-7eca4d57eac4?w=600&q=75&auto=format&fit=crop" alt="Cape May New Jersey lighthouse" loading="lazy"/>
+        <div class="neighborhood-overlay"></div>
+        <div class="neighborhood-info">
+          <p class="neighborhood-region">Cape May County</p>
+          <h3 class="neighborhood-name">Cape May</h3>
+          <p class="neighborhood-desc">Victorian grandeur meets coastal luxury at the southern tip of the Jersey Shore — a National Historic Landmark and perennial top destination.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- ===== LISTINGS ===== -->
+  <section id="listings" aria-labelledby="listings-heading" class="section-listings">
+    <div class="listings-inner">
+      <div class="listings-header reveal">
+        <div class="eyebrow">Current Listings</div>
+        <h2 id="listings-heading" class="section-heading">Properties on the <em>Market</em></h2>
+        <p class="section-subhead">Browse active listings across Philadelphia and the Jersey Shore. Updated daily from Bright MLS.</p>
+      </div>
+      <div class="listings-filter-bar" id="listingsFilterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="buy">For Sale</button>
+        <button class="filter-btn" data-filter="rent">For Rent</button>
+      </div>
+      <div class="listings-grid" id="listingsGrid">
+        <!-- populated by JS -->
+      </div>
+      <div class="listings-pagination" id="listingsPagination" style="display:none;">
+        <button class="pagination-btn" id="listingsPrev">← Prev</button>
+        <span class="pagination-info" id="listingsPageInfo"></span>
+        <button class="pagination-btn" id="listingsNext">Next →</button>
+      </div>
+    </div>
+  </section>
+  <div class="idx-compliance-bar" id="idxComplianceBar"></div>
+
+  <!-- ===== MEDIA / JOURNAL ===== -->
+  <section id="media" aria-labelledby="media-heading">
+    <div class="reveal">
+      <span class="section-label">Market Intelligence</span>
+      <h2 id="media-heading">Latest <em>Headlines</em></h2>
+      <p class="media-intro">Live real estate news — updated automatically so you're always reading what's current.</p>
+    </div>
+
+    <!-- Live news grid — populated by JS feed fetcher -->
+    <div class="media-grid" id="newsGrid" aria-live="polite" aria-label="Real estate news">
+      <!-- Skeleton placeholders shown while loading -->
+      <div class="media-card news-skeleton"></div>
+      <div class="media-card news-skeleton"></div>
+      <div class="media-card news-skeleton"></div>
+      <div class="media-card news-skeleton"></div>
+    </div>
+
+    <div class="news-attribution reveal" id="newsAttribution" style="display:none;">
+      <span class="news-attribution-text"></span>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-strip reveal" role="complementary" aria-label="Newsletter signup">
+      <div class="newsletter-copy">
+        <h3>Stay in the Know</h3>
+        <p>Market updates, new listings, and curated Shore intel — delivered monthly.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)" novalidate>
+        <label for="newsletter-email" class="sr-only">Email address</label>
+        <input
+          id="newsletter-email"
+          class="newsletter-input"
+          type="email"
+          placeholder="Your email address"
+          required
+          autocomplete="email"
+          aria-label="Email address for newsletter"
+        />
+        <button class="newsletter-btn" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="contact-left reveal">
+      <span class="section-label">Get in Touch</span>
+      <h2 id="contact-heading">Let's Find Your<br/><em>Next Home</em></h2>
+      <div class="divider divider-left"></div>
+      <p>Whether you're searching for a Philadelphia address or a Shore retreat — we're here to guide you every step of the way. Reach out for a confidential consultation.</p>
+
+      <div class="contact-details">
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Office</span>
+          <span class="contact-detail-value">RE/MAX One — Feasterville-Trevose, PA</span>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Phone</span>
+          <a class="contact-detail-value" href="tel:+12679800823" style="font-family:var(--serif); font-size:1rem; color:var(--navy);">(c) (267) 980-0823 &nbsp;|&nbsp; (o) (215) 953-8800</a>
+        </div>
+        <div class="contact-detail-item">
+          <span class="contact-detail-label">Email</span>
+          <a class="contact-detail-value" href="mailto:dantejpalantino@gmail.com" style="font-family:var(--serif); font-size:1rem; color:var(--navy);">dantejpalantino@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="contact-socials" aria-label="Social media links">
+        <a href="https://www.instagram.com/dantepalantinorealtor" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <form class="contact-form" id="contactForm" novalidate onsubmit="handleContactSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="firstName">First Name</label>
+            <input class="form-input" id="firstName" type="text" autocomplete="given-name" required placeholder="First" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input class="form-input" id="lastName" type="text" autocomplete="family-name" required placeholder="Last" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" id="email" type="email" autocomplete="email" required placeholder="your@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input class="form-input" id="phone" type="tel" autocomplete="tel" placeholder="(215) 000-0000" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="interest">I'm Interested In</label>
+          <select class="form-select" id="interest">
+            <option value="">Select one</option>
+            <option value="buying">Buying a Home</option>
+            <option value="selling">Selling a Home</option>
+            <option value="both">Buying &amp; Selling</option>
+            <option value="investment">Investment Property</option>
+            <option value="shore">Shore / Vacation Home</option>
+            <option value="relocation">Relocation</option>
+            <option value="valuation">Free Home Valuation</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-textarea" id="message" placeholder="Tell us about your ideal property or current situation…"></textarea>
+        </div>
+
+        <p class="form-disclaimer">
+          By submitting this form you consent to be contacted by Palantino Real Estate, a licensed real estate team brokered by RE/MAX One Realty, regarding your inquiry. Your information will not be sold or shared with third parties. Submitting this form does not create an agency relationship.
+        </p>
+
+        <button type="submit" class="btn btn-dark" style="width:100%; text-align:center; justify-content:center;">Send Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer role="contentinfo">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="margin-bottom:0.8rem;">
+          <img src="assets/logo-horizontal.svg" alt="Palantino Real Estate" class="footer-logo-img" />
+        </div>
+        <p class="footer-brand-text">Luxury residential real estate across Philadelphia and the New Jersey Shore. Boutique service. Proven results.</p>
+        <p class="footer-brand-text" style="margin-top:0.5rem;">Feasterville-Trevose, PA 19053</p>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#neighborhoods">Neighborhoods</a></li>
+          <li><a href="#media">Journal</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="onboarding/">Client Onboarding Kit</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Markets</p>
+        <ul class="footer-links">
+          <li><a href="#neighborhoods">Philadelphia</a></li>
+          <li><a href="#neighborhoods">Society Hill</a></li>
+          <li><a href="#neighborhoods">Old City</a></li>
+          <li><a href="#neighborhoods">Avalon &amp; Shore</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Services</p>
+        <ul class="footer-links">
+          <li><a href="#contact">Buyer Representation</a></li>
+          <li><a href="#contact">Seller Representation</a></li>
+          <li><a href="#contact">Investment Properties</a></li>
+          <li><a href="#contact">Shore &amp; Vacation Homes</a></li>
+          <li><a href="#contact">Free Home Valuation</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <!-- PAR / Legal Compliance Block -->
+      <div class="footer-compliance" role="note" aria-label="Legal disclosures">
+        <p><strong style="color:rgba(243,239,232,0.5);font-weight:500;">Sal Palantino</strong>, Broker of Record, PA License #AB123456 &nbsp;|&nbsp; <strong style="color:rgba(243,239,232,0.5);font-weight:500;">Dante Palantino</strong>, Licensed Real Estate Salesperson, PA License #RS789012</p>
+        <p style="margin-top:0.4rem;">Brokered by RE/MAX One Realty &nbsp;·&nbsp; Licensed in the Commonwealth of Pennsylvania &nbsp;·&nbsp; Feasterville-Trevose, PA 19053</p>
+        <p style="margin-top:0.4rem;">Palantino Real Estate operates under RE/MAX One Realty, a licensed Pennsylvania real estate broker. All information provided on this website is deemed reliable but not guaranteed and should be independently verified. Real estate listings on this site are for informational purposes only and do not constitute an offer to sell. Prices, availability, and property details are subject to change without notice. This website does not constitute legal, tax, or financial advice. Consumers should conduct their own due diligence and consult licensed professionals prior to any transaction. PA License of Supervising Broker on file.</p>
+        <p style="margin-top:0.4rem;">Palantino Real Estate abides by all applicable federal, state, and local fair housing laws. We do not discriminate on the basis of race, color, national origin, religion, sex, familial status, disability, sexual orientation, gender identity, or any other protected class.</p>
+      </div>
+
+      <div class="footer-legal-row">
+        <p class="footer-copyright">© 2026 Palantino Real Estate. All rights reserved.</p>
+        <div class="footer-eho" aria-label="Equal Housing Opportunity">
+          <div class="eho-icon" aria-hidden="true">⌂</div>
+          <span>Equal Housing Opportunity</span>
+        </div>
+        <span class="remax-attribution">Brokered by RE/MAX One Realty</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <!-- SR-only utility -->
+  <style>
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  </style>
+
+  <script>
+    // ==========================================
+    // ╔══════════════════════════════════════════╗
+    // ║   PALANTINO REAL ESTATE — IDX CONFIG     ║
+    // ╚══════════════════════════════════════════╝
+    //
+    //  HOW TO ACTIVATE LIVE MLS DATA:
+    //  ────────────────────────────────────────────
+    //  Step 1 — Broker IDX Application:
+    //    Sal (as Broker of Record) logs into the Bright MLS
+    //    member portal at https://brightmls.com and applies
+    //    for an IDX data agreement under:
+    //    Products & Services → IDX
+    //    Approval takes ~2 business days.
+    //
+    //  Step 2 — Sign up for SimplyRETS:
+    //    Visit https://simplyrets.com and create an account.
+    //    Connect your Bright MLS IDX credentials.
+    //    SimplyRETS will issue you an API key + secret.
+    //
+    //  Step 3 — Paste credentials below and set enabled: true
+    // ────────────────────────────────────────────
+
+    const IDX_CONFIG = {
+      enabled: false,                      // ← SET TO true AFTER CREDENTIALS ARE READY
+
+      // SimplyRETS API credentials (from https://simplyrets.com/account)
+      apiKey:    'YOUR_SIMPLYRETS_API_KEY',
+      apiSecret: 'YOUR_SIMPLYRETS_API_SECRET',
+
+      // Filter — only show listings from this office
+      // Bright MLS office name as it appears in MLS records:
+      officeName: 'RE/MAX One',
+
+      // Display settings
+      listingsPerPage: 6,                  // Cards shown per page
+      defaultStatus:   'Active',           // 'Active' | 'Pending' | 'Closed'
+
+      // Market area filters (maps to filter chips in the UI)
+      // These postal codes / city names are passed to the API
+      marketFilters: {
+        philadelphia: { cities: ['Philadelphia'], states: ['PA'] },
+        shore:        { cities: ['Avalon','Sea Isle City','Ocean City','Cape May','Stone Harbor','Wildwood'], states: ['NJ'] },
+      },
+    };
+
+    // ══════════════════════════════════════════════
+    //  FALLBACK DATA — shown when IDX is not active
+    //  (Replace or remove once live data is flowing)
+    // ══════════════════════════════════════════════
+    const SAMPLE_LISTINGS = [
+      {
+        mlsId: 'SAMPLE-001',
+        listPrice: 1895000,
+        address: { full: '314 Delancey Street', city: 'Philadelphia', state: 'PA', streetNumber: '314', streetName: 'Delancey Street' },
+        property: { bedrooms: 4, bathsFull: 3, bathsHalf: 1, area: 3200, subTypeText: 'Townhouse' },
+        photos: ['https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80&auto=format&fit=crop'],
+        office: { name: 'RE/MAX One Realty' },
+        neighborhood: 'Society Hill',
+        region: 'Philadelphia',
+        _isSample: true,
+        _large: true,
+      },
+      {
+        mlsId: 'SAMPLE-002',
+        listPrice: 3250000,
+        address: { full: '215 Ocean Drive', city: 'Avalon', state: 'NJ', streetNumber: '215', streetName: 'Ocean Drive' },
+        property: { bedrooms: 5, bathsFull: 4, bathsHalf: 0, area: 3800, subTypeText: 'Single Family' },
+        photos: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop'],
+        office: { name: 'RE/MAX One Realty' },
+        neighborhood: 'Avalon',
+        region: 'Jersey Shore',
+        _isSample: true,
+      },
+      {
+        mlsId: 'SAMPLE-003',
+        listPrice: 1650000,
+        address: { full: '528 South Street', city: 'Philadelphia', state: 'PA', streetNumber: '528', streetName: 'South Street' },
+        property: { bedrooms: 4, bathsFull: 3, bathsHalf: 1, area: 2900, subTypeText: 'Townhouse' },
+        photos: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80&auto=format&fit=crop'],
+        office: { name: 'RE/MAX One Realty' },
+        neighborhood: 'Queen Village',
+        region: 'Philadelphia',
+        _isSample: true,
+      },
+      {
+        mlsId: 'SAMPLE-004',
+        listPrice: 1450000,
+        address: { full: '88 Landis Avenue', city: 'Sea Isle City', state: 'NJ', streetNumber: '88', streetName: 'Landis Avenue' },
+        property: { bedrooms: 4, bathsFull: 3, bathsHalf: 0, area: 2400, subTypeText: 'Single Family' },
+        photos: ['https://images.unsplash.com/photo-1494526585095-c41746248156?w=800&q=80&auto=format&fit=crop'],
+        office: { name: 'RE/MAX One Realty' },
+        neighborhood: 'Sea Isle City',
+        region: 'Jersey Shore',
+        _isSample: true,
+      },
+      {
+        mlsId: 'SAMPLE-005',
+        listPrice: 1175000,
+        address: { full: 'The Lofts at Elfreth', city: 'Philadelphia', state: 'PA', streetNumber: '', streetName: 'Elfreth\'s Alley' },
+        property: { bedrooms: 3, bathsFull: 2, bathsHalf: 0, area: 2100, subTypeText: 'Condominium' },
+        photos: ['https://images.unsplash.com/photo-1448630360428-65456885c650?w=1200&q=80&auto=format&fit=crop'],
+        office: { name: 'RE/MAX One Realty' },
+        neighborhood: 'Old City',
+        region: 'Philadelphia',
+        _isSample: true,
+        _large: true,
+      },
+      {
+        mlsId: 'SAMPLE-006',
+        listPrice: 875000,
+        address: { full: '27 King Street', city: 'Haddonfield', state: 'NJ', streetNumber: '27', streetName: 'King Street' },
+        property: { bedrooms: 4, bathsFull: 2, bathsHalf: 1, area: 2850, subTypeText: 'Single Family' },
+        photos: ['https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80&auto=format&fit=crop'],
+        office: { name: 'RE/MAX One Realty' },
+        neighborhood: 'Haddonfield',
+        region: 'South Jersey',
+        _isSample: true,
+      },
+    ];
+
+    // ══════════════════════════════════════════════
+    //  IDX STATE
+    // ══════════════════════════════════════════════
+    let idx_allListings  = [];   // full dataset from API or sample
+    let idx_filtered     = [];   // after market filter applied
+    let idx_currentPage  = 1;
+    let idx_activeFilter = 'all';
+    let idx_isLive       = false; // true when real API data is loaded
+
+    // ══════════════════════════════════════════════
+    //  CORE: FETCH FROM SIMPLYRETS API
+    // ══════════════════════════════════════════════
+    async function fetchSimplyRETS(extraParams = {}) {
+      const base   = 'https://api.simplyrets.com/listings';
+      const params = new URLSearchParams({
+        status: IDX_CONFIG.defaultStatus,
+        limit:  100,                  // fetch a generous batch; we paginate client-side
+        ...extraParams,
+      });
+
+      const creds   = btoa(`${IDX_CONFIG.apiKey}:${IDX_CONFIG.apiSecret}`);
+      const resp    = await fetch(`${base}?${params.toString()}`, {
+        headers: { 'Authorization': `Basic ${creds}` },
+      });
+
+      if (!resp.ok) throw new Error(`SimplyRETS ${resp.status}: ${resp.statusText}`);
+      return resp.json();
+    }
+
+    // ══════════════════════════════════════════════
+    //  NORMALISE: map SimplyRETS listing → display obj
+    // ══════════════════════════════════════════════
+    function normaliseListing(l) {
+      const city  = l.address?.city  || '';
+      const state = l.address?.state || '';
+      const region = deriveRegion(city, state);
+
+      return {
+        ...l,
+        neighborhood: l.property?.subdivision || city,
+        region,
+        _isSample: false,
+        _large: false,       // layout assigned when rendering
+      };
+    }
+
+    function deriveRegion(city, state) {
+      const shoreNJ = ['Avalon','Sea Isle City','Ocean City','Cape May','Stone Harbor','Wildwood','Long Beach Township','Harvey Cedars','Ship Bottom','Surf City','Beach Haven'];
+      const mainLine = ['Villanova','Bryn Mawr','Wayne','Ardmore','Haverford','Radnor','Rosemont','Berwyn','Malvern','Paoli','Newtown Square'];
+      const southNJ  = ['Haddonfield','Cherry Hill','Moorestown','Medford','Marlton','Voorhees'];
+
+      if (state === 'NJ' && shoreNJ.some(s => city.toLowerCase().includes(s.toLowerCase()))) return 'Jersey Shore';
+      if (state === 'NJ' && southNJ.some(s => city.toLowerCase().includes(s.toLowerCase()))) return 'South Jersey';
+      // Main Line removed from active markets
+      if (state === 'PA' && city.toLowerCase().includes('philadelphia')) return 'Philadelphia';
+      return `${city}, ${state}`;
+    }
+
+    // ══════════════════════════════════════════════
+    //  INIT: decide live vs. sample, then render
+    // ══════════════════════════════════════════════
+    async function initListings() {
+      const grid = document.getElementById('listingsGrid');
+
+      if (IDX_CONFIG.enabled &&
+          IDX_CONFIG.apiKey !== 'YOUR_SIMPLYRETS_API_KEY') {
+        // ── LIVE MLS PATH ──────────────────────────
+        try {
+          showSkeletons(grid);
+
+          // Fetch RE/MAX One listings from Bright MLS via SimplyRETS
+          // SimplyRETS supports filtering by office name via 'q' param
+          const raw = await fetchSimplyRETS({ q: IDX_CONFIG.officeName });
+
+          idx_allListings = raw.map(normaliseListing);
+          idx_isLive      = true;
+
+          // Mark first two as "large" for editorial layout
+          if (idx_allListings[0]) idx_allListings[0]._large = true;
+          if (idx_allListings[4]) idx_allListings[4]._large = true;
+
+          updateComplianceBar(true);
+
+        } catch (err) {
+          console.error('[IDX] SimplyRETS fetch failed:', err);
+          showAPIError(grid, err.message);
+          return;
+        }
+      } else {
+        // ── SAMPLE DATA PATH ──────────────────────
+        idx_allListings = SAMPLE_LISTINGS;
+        idx_isLive      = false;
+        updateComplianceBar(false);
+        showSetupBanner();
+      }
+
+      idx_filtered = [...idx_allListings];
+      idx_currentPage = 1;
+      renderPage();
+    }
+
+    // ══════════════════════════════════════════════
+    //  RENDER CURRENT PAGE
+    // ══════════════════════════════════════════════
+    function renderPage() {
+      const grid  = document.getElementById('listingsGrid');
+      const perPage = IDX_CONFIG.listingsPerPage;
+      const start = (idx_currentPage - 1) * perPage;
+      const page  = idx_filtered.slice(start, start + perPage);
+
+      grid.innerHTML = '';
+
+      if (page.length === 0) {
+        grid.innerHTML = `<div class="listings-error" style="grid-column:1/-1;">
+          <p class="listings-error-title">No listings found in this market</p>
+          <p class="listings-error-sub">Try a different filter or check back soon</p>
+        </div>`;
+        return;
+      }
+
+      page.forEach((listing, i) => {
+        // Alternate large cards: pos 0 and 4 in full dataset go large
+        const isLarge = listing._large && idx_activeFilter === 'all';
+        grid.insertAdjacentHTML('beforeend', buildCard(listing, isLarge));
+      });
+
+      // Re-observe new cards for reveal animation
+      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      updatePagination();
+    }
+
+    // ══════════════════════════════════════════════
+    //  BUILD A LISTING CARD
+    // ══════════════════════════════════════════════
+    function buildCard(l, large = false) {
+      const photo     = (l.photos && l.photos.length > 0)
+                          ? l.photos[0]
+                          : 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80&auto=format&fit=crop';
+      const address   = l.address?.full || `${l.address?.streetNumber || ''} ${l.address?.streetName || ''}`.trim();
+      const city      = l.address?.city  || '';
+      const state     = l.address?.state || '';
+      const price     = formatPrice(l.listPrice);
+      const beds      = l.property?.bedrooms  || '—';
+      const baths     = formatBaths(l.property?.bathsFull, l.property?.bathsHalf);
+      const sqft      = l.property?.area ? `${l.property.area.toLocaleString()} sq ft` : '';
+      const hood      = l.neighborhood   || city;
+      const region    = l.region         || `${city}, ${state}`;
+      const office    = l.office?.name   || IDX_CONFIG.officeName;
+      const mlsUrl    = l.mlsId ? `#listing-${l.mlsId}` : '#contact';
+      const detailStr = [beds ? `${beds} Bed` : null, baths ? `${baths} Bath` : null, sqft].filter(Boolean).join('  ·  ');
+      const isSample  = l._isSample;
+      const liveTag   = !isSample
+                          ? `<div class="listing-idx-badge"><span class="listing-idx-dot"></span><span class="listing-idx-text">Live MLS</span></div>`
+                          : '';
+
+      return `
+      <article class="listing-card ${large ? 'large' : ''} reveal" role="article" aria-label="Listing: ${address}">
+        <a href="${mlsUrl}" aria-label="View details for ${address}">
+          <div class="listing-img">
+            <img src="${photo}" alt="${address}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80&auto=format&fit=crop'"/>
+          </div>
+        </a>
+        <div class="listing-overlay"></div>
+        ${liveTag}
+        <div class="listing-info">
+          <p class="listing-neighborhood">${hood} · ${region}</p>
+          <h3 class="listing-address">${address}</h3>
+          <p class="listing-details">${detailStr}</p>
+          <p class="listing-price">${price}</p>
+          <p class="listing-courtesy">Listing Courtesy of ${office}</p>
+        </div>
+        <div class="listing-hover-cta" aria-hidden="true">
+          <a href="${mlsUrl}" class="listing-arrow" aria-label="View listing">→</a>
+        </div>
+      </article>`;
+    }
+
+    // ══════════════════════════════════════════════
+    //  FILTER LISTINGS BY MARKET CHIP
+    // ══════════════════════════════════════════════
+    function filterListings(filter, btn) {
+      // Update chip UI
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+
+      idx_activeFilter = filter;
+      idx_currentPage  = 1;
+
+      if (filter === 'all') {
+        idx_filtered = [...idx_allListings];
+      } else {
+        const f = IDX_CONFIG.marketFilters[filter];
+        if (!f) { idx_filtered = [...idx_allListings]; }
+        else {
+          idx_filtered = idx_allListings.filter(l => {
+            const city  = (l.address?.city  || '').toLowerCase();
+            const state = (l.address?.state || '').toLowerCase();
+            const matchCity  = f.cities.some(c => city.includes(c.toLowerCase()));
+            const matchState = f.states.map(s => s.toLowerCase()).includes(state);
+            // Also match on derived region
+            const matchRegion = filter === 'shore'        && l.region === 'Jersey Shore'
+                              || filter === 'mainline'    && l.region === 'Main Line'
+                              || filter === 'philadelphia'&& l.region === 'Philadelphia';
+            return matchCity || matchRegion;
+          });
+        }
+      }
+      renderPage();
+    }
+
+    // ══════════════════════════════════════════════
+    //  PAGINATION
+    // ══════════════════════════════════════════════
+    function changePage(dir) {
+      const total = Math.ceil(idx_filtered.length / IDX_CONFIG.listingsPerPage);
+      idx_currentPage = Math.max(1, Math.min(total, idx_currentPage + dir));
+      renderPage();
+      document.getElementById('listings').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function updatePagination() {
+      const total   = Math.ceil(idx_filtered.length / IDX_CONFIG.listingsPerPage);
+      const pagWrap = document.getElementById('listingsPagination');
+      const prev    = document.getElementById('pagePrev');
+      const next    = document.getElementById('pageNext');
+      const ind     = document.getElementById('pageIndicator');
+
+      pagWrap.style.display = total > 1 ? 'flex' : 'none';
+      ind.textContent       = `${idx_currentPage} / ${total}`;
+      prev.disabled         = idx_currentPage <= 1;
+      next.disabled         = idx_currentPage >= total;
+    }
+
+    // ══════════════════════════════════════════════
+    //  HELPERS
+    // ══════════════════════════════════════════════
+    function formatPrice(n) {
+      if (!n) return '—';
+      return '$' + Number(n).toLocaleString('en-US');
+    }
+
+    function formatBaths(full, half) {
+      if (!full && !half) return '—';
+      if (half) return `${full || 0}.5`;
+      return `${full}`;
+    }
+
+    function showSkeletons(grid) {
+      grid.innerHTML = `
+        <div class="listing-skeleton listing-card large" style="height:560px;"></div>
+        <div class="listing-skeleton listing-card" style="height:480px;"></div>
+        <div class="listing-skeleton listing-card" style="height:480px;"></div>
+        <div class="listing-skeleton listing-card" style="height:480px;"></div>
+        <div class="listing-skeleton listing-card large" style="height:560px;"></div>
+        <div class="listing-skeleton listing-card" style="height:480px;"></div>`;
+    }
+
+    function showAPIError(grid, msg) {
+      grid.innerHTML = `<div class="listings-error" style="grid-column:1/-1;">
+        <p class="listings-error-title">MLS Connection Unavailable</p>
+        <p class="listings-error-sub">Unable to connect to Bright MLS. Please verify your IDX credentials in IDX_CONFIG.<br/>Detail: ${msg}</p>
+      </div>`;
+    }
+
+    function showSetupBanner() {
+      // Insert the setup guidance banner before the filter bar
+      const filterBar = document.getElementById('listingsFilterBar');
+      if (!filterBar) return;
+      const banner = document.createElement('div');
+      banner.className = 'idx-setup-banner reveal';
+      banner.setAttribute('role', 'status');
+      banner.innerHTML = `
+        <div class="idx-setup-banner-text">
+          <p class="idx-setup-title">IDX Integration Ready — Awaiting Credentials</p>
+          <p class="idx-setup-sub">
+            Sample listings are shown below. To activate live Bright MLS data:
+            (1) Apply for IDX at brightmls.com/products/IDX →
+            (2) Sign up at simplyrets.com →
+            (3) Set IDX_CONFIG.enabled = true with your API key &amp; secret.
+          </p>
+        </div>
+        <a href="https://brightmls.com/products/IDX" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;font-size:0.58rem;">Apply for IDX →</a>`;
+      filterBar.parentElement.insertBefore(banner, filterBar);
+    }
+
+    function updateComplianceBar(isLive) {
+      const bar = document.getElementById('idxComplianceBar');
+      const ts  = document.getElementById('idxLastUpdated');
+      if (!bar) return;
+
+      if (isLive) {
+        ts.textContent = 'Data last updated: ' + new Date().toLocaleString('en-US', {
+          month: 'long', day: 'numeric', year: 'numeric',
+          hour: 'numeric', minute: '2-digit', timeZoneName: 'short',
+        });
+      } else {
+        ts.textContent = 'Showing sample listings — live MLS data will appear once IDX credentials are configured.';
+      }
+    }
+
+    // Kick off on DOM ready
+    document.addEventListener('DOMContentLoaded', initListings);
+
+    // ==========================================
+    //  LIVE NEWS FEED
+    //  Source: Google News RSS (no key needed)
+    //  Proxy chain: tries 3 CORS proxies in order
+    // ==========================================
+
+    const NEWS_FEEDS = [
+      {
+        url: 'https://news.google.com/rss/search?q=Philadelphia+real+estate&hl=en-US&gl=US&ceid=US:en',
+        label: 'Philadelphia Market',
+      },
+      {
+        url: 'https://news.google.com/rss/search?q=New+Jersey+shore+real+estate&hl=en-US&gl=US&ceid=US:en',
+        label: 'Shore Market',
+      },
+    ];
+
+    // Three independent CORS proxies — tried in order until one works
+    // Proxy A: corsproxy.io — returns raw body directly
+    // Proxy B: allorigins.win — returns { contents: rawXML }
+    // Proxy C: codetabs.com  — returns raw body directly
+    const PROXY_CHAIN = [
+      async (url) => {
+        const r = await fetch(`https://corsproxy.io/?${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(7000) });
+        if (!r.ok) throw new Error(`corsproxy ${r.status}`);
+        return r.text();
+      },
+      async (url) => {
+        const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(7000) });
+        if (!r.ok) throw new Error(`allorigins ${r.status}`);
+        const j = await r.json();
+        if (!j.contents) throw new Error('allorigins empty');
+        return j.contents;
+      },
+      async (url) => {
+        const r = await fetch(`https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`, { signal: AbortSignal.timeout(7000) });
+        if (!r.ok) throw new Error(`codetabs ${r.status}`);
+        return r.text();
+      },
+    ];
+
+    const NEWS_FALLBACK_IMGS = [
+      'https://images.unsplash.com/photo-1667318252802-c6caa7f13ec6?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1720631881905-a66dbfd0d773?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1533391200381-f601c655fac2?w=600&q=75&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1690303563939-2d0b77bf393a?w=600&q=75&auto=format&fit=crop',
+    ];
+
+    // Try each proxy in sequence; return XML text from the first that succeeds
+    async function fetchWithProxyChain(url) {
+      for (const proxy of PROXY_CHAIN) {
+        try {
+          const xml = await proxy(url);
+          if (xml && xml.includes('<item>')) return xml;
+        } catch (e) {
+          console.warn('[News proxy]', e.message);
+        }
+      }
+      throw new Error('All proxies failed for: ' + url);
+    }
+
+    // Parse RSS XML string → array of item objects
+    function parseRSS(xmlText, label) {
+      const doc   = new DOMParser().parseFromString(xmlText, 'text/xml');
+      const items = Array.from(doc.querySelectorAll('item'));
+
+      return items.slice(0, 6).map(item => {
+        // title / pubDate
+        const title   = item.querySelector('title')?.textContent?.trim()   || '';
+        const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
+
+        // link — in Google News RSS the <link> element is a sibling text node;
+        // fall back to <guid> which also contains the URL
+        let link = '';
+        const linkNode = item.querySelector('link');
+        if (linkNode) link = linkNode.textContent?.trim() || linkNode.getAttribute('href') || '';
+        if (!link) link = item.querySelector('guid')?.textContent?.trim() || '#';
+
+        // image — Google News items rarely include one; we use fallbacks by index
+        let thumbnail = '';
+        const mc = item.getElementsByTagNameNS('http://search.yahoo.com/mrss/', 'content')[0];
+        if (mc) thumbnail = mc.getAttribute('url') || '';
+        if (!thumbnail) {
+          const enc = item.querySelector('enclosure[type^="image"]');
+          if (enc) thumbnail = enc.getAttribute('url') || '';
+        }
+        if (!thumbnail) {
+          const desc = item.querySelector('description')?.textContent || '';
+          const m = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
+          if (m) thumbnail = m[1];
+        }
+
+        // source name — Google News wraps this in <source>
+        const source = item.querySelector('source')?.textContent?.trim() || label;
+
+        return { title, link, pubDate, thumbnail, source, label };
+      }).filter(i => i.title && i.link !== '#');
+    }
+
+    function newsDate(str) {
+      if (!str) return '';
+      const d = new Date(str);
+      return isNaN(d) ? '' : d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function buildNewsCard(item, idx) {
+      const fallback = NEWS_FALLBACK_IMGS[idx % NEWS_FALLBACK_IMGS.length];
+      const img      = (item.thumbnail && item.thumbnail.startsWith('http')) ? item.thumbnail : fallback;
+      const date     = newsDate(item.pubDate);
+      const safeTitle = item.title.replace(/&quot;|"/g, "'");
+
+      return `
+        <article class="media-card reveal" role="article">
+          <a href="${item.link}" target="_blank" rel="noopener noreferrer" aria-label="Read: ${safeTitle}">
+            <div class="media-card-img">
+              <img src="${img}" alt="" loading="lazy" onerror="this.src='${fallback}'"/>
+            </div>
+            <div class="media-card-body">
+              <p class="media-tag">${item.source}</p>
+              <h3 class="media-title">${item.title}</h3>
+              ${date ? `<p class="media-date">${date}</p>` : ''}
+            </div>
+          </a>
+        </article>`;
+    }
+
+    async function initNewsFeed() {
+      const grid = document.getElementById('newsGrid');
+      if (!grid) return;
+
+      const results = await Promise.allSettled(
+        NEWS_FEEDS.map(f => fetchWithProxyChain(f.url).then(xml => parseRSS(xml, f.label)))
+      );
+
+      let allItems = [];
+      results.forEach(r => {
+        if (r.status === 'fulfilled') allItems = allItems.concat(r.value);
+        else console.warn('[News feed]', r.reason?.message);
+      });
+
+      if (allItems.length === 0) {
+        grid.innerHTML = `<div class="news-error">Market headlines are temporarily unavailable — check back soon.</div>`;
+        return;
+      }
+
+      // Sort newest-first, take top 4
+      allItems.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+      grid.innerHTML = allItems.slice(0, 4).map(buildNewsCard).join('');
+      grid.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      const attr = document.getElementById('newsAttribution');
+      if (attr) {
+        attr.style.display = 'block';
+        attr.querySelector('.news-attribution-text').textContent =
+          'Headlines via Google News · Updated automatically on page load';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initNewsFeed);
+
+    // ==========================================
+    // NAV: transparent → solid on scroll
+    // ==========================================
+    const nav = document.getElementById('nav');
+    const backTop = document.getElementById('back-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        nav.classList.add('scrolled');
+        backTop.classList.add('visible');
+      } else {
+        nav.classList.remove('scrolled');
+        backTop.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    // ==========================================
+    // HERO: trigger BG zoom on load
+    // ==========================================
+    window.addEventListener('load', () => {
+      document.getElementById('hero').classList.add('loaded');
+    });
+
+    // ==========================================
+    // MOBILE MENU
+    // ==========================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileClose.addEventListener('click', () => closeMobileMenu());
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    // Close on outside click
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) closeMobileMenu();
+    });
+
+    // ==========================================
+    // SCROLL REVEAL (Intersection Observer)
+    // ==========================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // stagger siblings in same parent
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const idx = siblings.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, idx * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ==========================================
+    // FORMS
+    // ==========================================
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('newsletter-email');
+      if (!input.value || !input.value.includes('@')) {
+        input.style.borderColor = '#c0392b';
+        input.focus();
+        return;
+      }
+      input.style.borderColor = '';
+      const btn = e.target.querySelector('.newsletter-btn');
+      btn.textContent = 'Subscribed ✓';
+      btn.style.background = 'var(--gold)';
+      btn.style.color = 'var(--navy)';
+      input.value = '';
+      setTimeout(() => { btn.textContent = 'Subscribe'; btn.style.background = ''; btn.style.color = ''; }, 4000);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const btn = form.querySelector('button[type="submit"]');
+      btn.textContent = 'Inquiry Sent — We\'ll Be in Touch';
+      btn.style.background = 'var(--navy)';
+      btn.style.color = 'var(--ivory)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Inquiry';
+        btn.disabled = false;
+        form.reset();
+      }, 6000);
+    }
+
+    // ==========================================
+    // SMOOTH ACTIVE NAV HIGHLIGHT
+    // ==========================================
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + entry.target.id) {
+              a.style.color = 'var(--gold)';
+            }
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+  </script>
+</body>
+</html>
